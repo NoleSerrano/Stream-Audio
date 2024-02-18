@@ -1,6 +1,15 @@
 import socket
 import pyaudio
-import sys
+import os
+import signal
+import keyboard
+
+def stop_script():
+    print("Stopping script")
+    os.kill(os.getpid(), signal.SIGTERM)
+
+stop_keybind="alt+z"
+keyboard.add_hotkey(stop_keybind, stop_script)
 
 # Audio configuration
 FORMAT = pyaudio.paInt16
